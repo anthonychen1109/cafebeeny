@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+//ACTIONS
+import { fetchMenu } from '../actions';
 
 class SearchBar extends Component {
   constructor(props){
@@ -9,21 +13,24 @@ class SearchBar extends Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/menu/')
-    .then(response => response.json())
-    .then(response => this.setState({ 'menu': response }))
+    this.props.fetchMenu();
   }
 
   render() {
     return (
-      <div>
-        {this.state.menu.map(item => {
+      <div className="container">
+        <button
+          onClick={() => this.props.fetchMenu()}
+          >
+          fetch
+        </button>
+        {this.props.menu.map((item,index) => {
           return (
-            <div key={item.id}>
-              <li>{item.menuid}</li>
-              <li>{item.name}</li>
-              <li>{item.subtext}</li>
-              <li>{item.image}</li>
+            <div key={index}>
+              <li>id: {item[index].id}</li>
+              <li>name: {item[index].name}</li>
+              <li>subtext: {item[index].subtext}</li>
+              <li>image: {item[index].image}</li>
             </div>
           )
         })}
@@ -32,4 +39,10 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+function mapStateToProps({ menu }) {
+  return {
+    menu
+  }
+}
+
+export default connect(mapStateToProps, { fetchMenu })(SearchBar);
