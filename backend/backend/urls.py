@@ -15,13 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from my_app.views import MenuViewSet
-from rest_framework import routers
-
-router = routers.DefaultRouter()
-router.register(r'menu', MenuViewSet, base_name='menu')
-
+from api import views
 urlpatterns = [
+    url(r'^create_menu/', include('api.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'api/', include(router.urls))
 ]
