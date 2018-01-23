@@ -1,0 +1,17 @@
+.heading {
+  text-align: center;
+}
+
+.input {
+  display: flex;
+  div {
+    margin: 10px;
+  }
+  .input-name {
+    min-width: 100px;
+  }
+}
+
+.save-btn {
+  float: right;
+}

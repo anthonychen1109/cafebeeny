@@ -1,0 +1,14 @@
+.heading {
+  text-align: center; }
+
+.input {
+  display: flex; }
+  .input div {
+    margin: 10px; }
+  .input .input-name {
+    min-width: 100px; }
+
+.save-btn {
+  float: right; }
+
+/*# sourceMappingURL=styles.css.map */
