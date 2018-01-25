@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // COMPONENTS
-import Create from '../components/create';
+import Menu from '../containers/menu';
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <div>
-        <Route exact path="/" component={Create} />
+        <Route path="/menu" component={Menu} />
       </div>
     </BrowserRouter>
   )

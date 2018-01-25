@@ -1,15 +1,22 @@
-.heading {
-  text-align: center;
+// ################### MENU ##################
+
+.title {
+  h1 {
+    text-align: center;
+  }
 }
 
 .input {
   display: flex;
-  div {
-    margin: 10px;
-  }
+  flex-direction: row;
+  margin-top: 40px;
   .input-name {
-    min-width: 100px;
+    width: 100px;
   }
+}
+
+input:focus {
+  outline: none;
 }
 
 .save-btn {
