@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // ACTIONS
-import { fetchMenu, postMenu } from '../actions';
+import { fetchMenu, postMenu, updateMenu } from '../actions';
 
 class Create extends Component {
   constructor(props) {
@@ -61,6 +61,18 @@ class Create extends Component {
       <div className="container">
         <form onSubmit={this.handleSubmit}>
           <div className="title"><h1>Menu:</h1></div>
+            <div>
+              <select>
+                <option>
+                  Create New Menu
+                </option>
+                {this.props.fetchmenu.map((menu, index) => {
+                  return(
+                    <option key={index}>{menu.subtext}</option>
+                  )
+                })}
+              </select>
+            </div>
             <div className="input">
               <div className="input-name"><p>Menu ID:</p></div>
               <div><input onChange={this.changeMenu} value={this.state.menuid}/></div>
@@ -88,11 +100,12 @@ class Create extends Component {
   }
 }
 
-function mapStateToProps({ fetchmenu, postmenu }) {
+function mapStateToProps({ fetchmenu, postmenu, updatemenu }) {
   return {
     fetchmenu,
-    postmenu
+    postmenu,
+    updatemenu
   }
 }
 
-export default connect( mapStateToProps , { fetchMenu, postMenu })(Create);
+export default connect( mapStateToProps , { fetchMenu, postMenu, updateMenu })(Create);
