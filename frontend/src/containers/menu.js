@@ -11,7 +11,8 @@ class Create extends Component {
       menuid: '',
       name: '',
       subtext: '',
-      image: ''
+      image: '',
+      'items': []
     };
     this.changeMenu = this.changeMenu.bind(this);
     this.changeName = this.changeName.bind(this);
@@ -53,26 +54,27 @@ class Create extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchMenu();
+    console.log('componentmounted', this.props.fetchMenu());
   }
 
   render() {
+    console.log('resolved', this.props.fetchmenu);
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit}>
           <div className="title"><h1>Menu:</h1></div>
-            <div>
-              <select>
-                <option>
-                  Create New Menu
+          <select>
+            <option>
+              Create A New Menu
+            </option>
+            {this.props.fetchmenu.menuItems.map((item, index) => {
+              return (
+                <option key={item.menuid}>
+                  {item.menuid}
                 </option>
-                {this.props.fetchmenu.map((menu, index) => {
-                  return(
-                    <option key={index}>{menu.subtext}</option>
-                  )
-                })}
-              </select>
-            </div>
+              )
+            })}
+          </select>
             <div className="input">
               <div className="input-name"><p>Menu ID:</p></div>
               <div><input onChange={this.changeMenu} value={this.state.menuid}/></div>
