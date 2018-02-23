@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from .models import Menu
+from .models import Menu, Item
 
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields = '__all__'
 
-class MenuCreateSerializer(serializers.ModelSerializer):
+class ItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Menu
+        model = Item
         fields = '__all__'

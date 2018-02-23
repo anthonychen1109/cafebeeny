@@ -20,8 +20,10 @@ from api import views
 
 router = routers.SimpleRouter()
 router.register(r'menu', views.MenuViewSet)
+router.register(r'item', views.ItemViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls, namespace='menu')),
+    url(r'^', include(router.urls, namespace='item')),
 ]
