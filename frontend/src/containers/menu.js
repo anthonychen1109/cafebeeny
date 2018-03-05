@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { fetchMenu, postMenuItem } from '../actions';
+import { fetchMenu, postMenuItem, fetchMenuItem } from '../actions';
 
 class Menu extends Component {
   constructor(props) {
@@ -11,13 +10,15 @@ class Menu extends Component {
       id: '',
       name: '',
       subtext: '',
-      image: ''
+      image: '',
+      selectedItem: ''
     };
     this.changeId = this.changeId.bind(this);
     this.changeName = this.changeName.bind(this);
     this.changeSubtext = this.changeSubtext.bind(this);
     this.changeImage = this.changeImage.bind(this);
     this.save = this.save.bind(this);
+    this.setSelectedItem = this.setSelectedItem.bind(this);
   }
 
   componentDidMount() {
@@ -43,27 +44,48 @@ class Menu extends Component {
   save() {
     this.props.postMenuItem(this.state.id,this.state.name,this.state.subtext,this.state.image)
     this.setState({ id: '', name: '', subtext: '', image: ''})
+    window.location.reload();
+  }
+
+  setSelectedItem() {
+    this.props.fetchMenuItem(3);
+    console.log(this.props.fetchMenuItem.menuItems.name);
   }
 
   render() {
-    // console.log(this.props.getMenu);
     return (
       <div className="menu">
         <h1>Menu</h1>
+        <h3 className="menu-list">Current Menu List</h3>
+        {this.props.getMenu.menuItems.map((item, index) => {
+          return (
+            <div key={item+index} className="render-menu-items"
+              onClick={() => this.setSelectedItem()}
+              >
+              <div className="render-menu-container container">
+                <div><p>Menu Id: </p>{item.menuid}</div>
+                <div><p>Name: </p>{item.name}</div>
+                <div><p>Subtext: </p>{item.subtext}</div>
+                <div><p>Image: </p>{item.image}</div>
+              </div>
+              <hr />
+            </div>
+          )
+        })}
         <div className="menu-container container">
-          <div className="menuInputs">
+          <div className="menu-inputs">
             <span>Menu Id:</span>
             <input onChange={this.changeId} value={this.state.id} />
           </div>
-          <div className="menuInputs">
+          <div className="menu-inputs">
             <span>Name:</span>
             <input onChange={this.changeName} value={this.state.name} />
           </div>
-          <div className="menuInputs">
+          <div className="menu-inputs">
             <span>Subtext:</span>
             <input onChange={this.changeSubtext} value={this.state.subtext} />
           </div>
-          <div className="menuInputs">
+          <div className="menu-inputs">
             <span>Image:</span>
             <input onChange={this.changeImage} value={this.state.image} />
           </div>
@@ -80,8 +102,9 @@ class Menu extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    getMenu: state.getMenu
+    getMenu: state.getMenu,
+    getMenuItem: state.getMenuItem,
   }
 }
 
-export default connect(mapStateToProps, { fetchMenu, postMenuItem })(Menu);
+export default connect(mapStateToProps, { fetchMenu, postMenuItem, fetchMenuItem })(Menu);
