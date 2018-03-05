@@ -1,24 +1,31 @@
 // ################### MENU ##################
-
-.title {
+.menu {
   h1 {
     text-align: center;
   }
-}
-
-.input {
-  display: flex;
-  flex-direction: row;
-  margin-top: 40px;
-  .input-name {
-    width: 100px;
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    .menuInputs {
+      display: flex;
+      padding: 10px;
+      span {
+        font-weight: bold;
+        min-width: 10%;
+        text-align: right;
+      }
+      input {
+        margin-left: 10px;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
-}
-
-input:focus {
-  outline: none;
-}
-
-.save-btn {
-  float: right;
+  button {
+    float: right;
+    margin: 0 5%;
+  }
 }

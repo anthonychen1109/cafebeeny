@@ -1,1 +1,1 @@
-.title h1{text-align:center}.input{display:flex;flex-direction:row;margin-top:40px}.input .input-name{width:100px}input:focus{outline:none}.save-btn{float:right}
+.menu h1{text-align:center}.menu .menu-container{display:flex;flex-direction:column;padding-top:20px}.menu .menu-container .menuInputs{display:flex;padding:10px}.menu .menu-container .menuInputs span{font-weight:bold;min-width:10%;text-align:right}.menu .menu-container .menuInputs input{margin-left:10px;width:100%}.menu .menu-container .menuInputs input:focus{outline:none}.menu button{float:right;margin:0 5%}
