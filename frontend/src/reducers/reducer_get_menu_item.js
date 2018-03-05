@@ -1,12 +1,12 @@
-import { FETCH_MENU } from '../actions';
+import { FETCH_MENU_ITEM } from '../actions';
 
 const initialState = {
   menuItems: []
 }
-
 export default function(state=initialState, action) {
   switch(action.type) {
-    case FETCH_MENU:
+    case FETCH_MENU_ITEM:
+      console.log('action.payload', action.payload);
       return {
         ...state,
         menuItems: action.payload
