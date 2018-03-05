@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchMenu, postMenuItem, fetchMenuItem } from '../actions';
+import { fetchMenu, postMenuItem, fetchMenuItem, deleteMenuItem } from '../actions';
 
 class Menu extends Component {
   constructor(props) {
@@ -47,9 +47,8 @@ class Menu extends Component {
     window.location.reload();
   }
 
-  setSelectedItem() {
-    this.props.fetchMenuItem(3);
-    console.log(this.props.fetchMenuItem.menuItems.name);
+  setSelectedItem(id) {
+    this.props.fetchMenuItem(id);
   }
 
   render() {
@@ -60,7 +59,7 @@ class Menu extends Component {
         {this.props.getMenu.menuItems.map((item, index) => {
           return (
             <div key={item+index} className="render-menu-items"
-              onClick={() => this.setSelectedItem()}
+              onClick={() => this.setSelectedItem(item.menuid)}
               >
               <div className="render-menu-container container">
                 <div><p>Menu Id: </p>{item.menuid}</div>
@@ -95,6 +94,11 @@ class Menu extends Component {
           onClick={this.save}>
           Save
         </button>
+        <button
+          onClick={() => this.props.deleteMenuItem(3)}
+          >
+          Delete
+        </button>
       </div>
     )
   }
@@ -107,4 +111,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchMenu, postMenuItem, fetchMenuItem })(Menu);
+export default connect(mapStateToProps, { fetchMenu, postMenuItem, fetchMenuItem, deleteMenuItem })(Menu);
