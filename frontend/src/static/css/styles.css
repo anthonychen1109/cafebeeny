@@ -1,23 +1,37 @@
+.menu .menu-list {
+  margin: 5%; }
+.menu .render-menu-items {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0; }
+  .menu .render-menu-items:hover {
+    background-color: red; }
+  .menu .render-menu-items .render-menu-container div {
+    display: flex; }
+    .menu .render-menu-items .render-menu-container div p {
+      font-weight: bold;
+      min-width: 10%; }
 .menu h1 {
   text-align: center; }
 .menu .menu-container {
   display: flex;
   flex-direction: column;
   padding-top: 20px; }
-  .menu .menu-container .menuInputs {
+  .menu .menu-container .menu-inputs {
     display: flex;
     padding: 10px; }
-    .menu .menu-container .menuInputs span {
+    .menu .menu-container .menu-inputs span {
       font-weight: bold;
       min-width: 10%;
       text-align: right; }
-    .menu .menu-container .menuInputs input {
+    .menu .menu-container .menu-inputs input {
       margin-left: 10px;
       width: 100%; }
-      .menu .menu-container .menuInputs input:focus {
+      .menu .menu-container .menu-inputs input:focus {
         outline: none; }
 .menu button {
   float: right;
-  margin: 0 5%; }
+  margin: 2% 5%; }
 
 /*# sourceMappingURL=styles.css.map */

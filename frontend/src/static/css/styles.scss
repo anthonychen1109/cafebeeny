@@ -1,5 +1,26 @@
 // ################### MENU ##################
 .menu {
+  .menu-list {
+    margin: 5%;
+  }
+  .render-menu-items {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+    &:hover {
+      background-color: red;
+    }
+    .render-menu-container {
+      div {
+        display: flex;
+        p {
+          font-weight: bold;
+          min-width: 10%;
+        }
+      }
+    }
+  }
   h1 {
     text-align: center;
   }
@@ -7,7 +28,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 20px;
-    .menuInputs {
+    .menu-inputs {
       display: flex;
       padding: 10px;
       span {
@@ -26,6 +47,6 @@
   }
   button {
     float: right;
-    margin: 0 5%;
+    margin: 2% 5%;
   }
 }
